@@ -4,7 +4,7 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "dev": "npm-run-all dev:server",
+    "dev": "nodemon server.js",
     "dev:server": "NODE_ENV=development nodemon server.js server.js --watch src --watch server.js",
     "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -12,6 +12,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "express": "^4.16.3",
+    "fs-extra": "^7.0.0",
     "npm-run-all": "4.1.2"
   },
   "devDependencies": {
