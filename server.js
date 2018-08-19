@@ -11,6 +11,12 @@ const devConfig = require('./knexfile.js')
 //import objection.Model
 const { Model } = require('objection')
 
+// ** A.1 Install + IMPORT BODY PARSER **
+///   library allows application to read (parse)
+//    json in the body of a POST/PUT/DELETE request
+const bodyParser = require('body-parser')
+
+
 
 const app = express()
 const PORT = 3000
@@ -41,8 +47,18 @@ app.locals.db = appDb
 //   })
 
 
+// ** A.2 Configure body parser as middleware for
+//        express application.   **
+// ^^ ... before your app routers in express
+// app.use('/', pageRouter)
+// app.use('/apiRouter', apiRouter)
+
+app.use( bodyParser.urlencoded({extended: false}) )
+app.use( bodyParser.json() )
 
 
+
+//Routers in express
 app.use ('/', pageRouter)
 app.use ('/api', apiRouter)
 
