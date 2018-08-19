@@ -13104,6 +13104,81 @@ var Companies = function (_React$Component) {
         "h2",
         null,
         "Companies"
+      ),
+      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        "div",
+        { className: "company-listing" },
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          "h3",
+          { className: "company-listing__title" },
+          "Title"
+        ),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          "p",
+          { className: "company-listing__subtitle" },
+          "Subtitle"
+        ),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          "p",
+          { className: "company-listing__description" },
+          "Description"
+        ),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          "button",
+          { className: "company-listing__view-company-btn" },
+          "See More"
+        ),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("hr", { className: "job-listing__divider" })
+      ),
+      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        "div",
+        { className: "company-listing" },
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          "h3",
+          { className: "company-listing__title" },
+          "Title"
+        ),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          "p",
+          { className: "company-listing__subtitle" },
+          "Subtitle"
+        ),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          "p",
+          { className: "company-listing__description" },
+          "Description"
+        ),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          "button",
+          { className: "company-listing__view-company-btn" },
+          "See More"
+        ),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("hr", { className: "job-listing__divider" })
+      ),
+      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        "div",
+        { className: "company-listing" },
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          "h3",
+          { className: "company-listing__title" },
+          "Title"
+        ),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          "p",
+          { className: "company-listing__subtitle" },
+          "Subtitle"
+        ),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          "p",
+          { className: "company-listing__description" },
+          "Description"
+        ),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          "button",
+          { className: "company-listing__view-company-btn" },
+          "See More"
+        ),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("hr", { className: "job-listing__divider" })
       )
     );
   };
@@ -13147,6 +13222,66 @@ var JobListings = function (_React$Component) {
         'h2',
         null,
         'Job Listings'
+      ),
+      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        'div',
+        { className: 'job-listing' },
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          'h3',
+          { className: 'job-listing__title' },
+          'Title'
+        ),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          'p',
+          { className: 'job-listing__location' },
+          'Location'
+        ),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          'button',
+          { className: 'job_listing__view-job-btn' },
+          'See More'
+        ),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('hr', { className: 'job-listing__divider' })
+      ),
+      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        'div',
+        { className: 'job-listing' },
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          'h3',
+          { className: 'job-listing__title' },
+          'Title'
+        ),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          'p',
+          { className: 'job-listing__location' },
+          'Location'
+        ),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          'button',
+          { className: 'job_listing__view-job-btn' },
+          'See More'
+        ),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('hr', { className: 'job-listing__divider' })
+      ),
+      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        'div',
+        { className: 'job-listing' },
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          'h3',
+          { className: 'job-listing__title' },
+          'Title'
+        ),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          'p',
+          { className: 'job-listing__location' },
+          'Location'
+        ),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          'button',
+          { className: 'job_listing__view-job-btn' },
+          'See More'
+        ),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('hr', { className: 'job-listing__divider' })
       )
     );
   };

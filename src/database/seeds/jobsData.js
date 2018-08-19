@@ -1,4 +1,4 @@
-const jobDataRows = [
+export const jobDataRows = [
   {
     title: 'Database Administrator - MySQL',
     description: 'Key players will take ownership of their bandwidths by conservatively right-sizing best-of-breed standpoints.',
