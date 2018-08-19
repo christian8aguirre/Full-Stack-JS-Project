@@ -91,6 +91,10 @@ app.use('/auth', authRouter)
 app.use ('/api', apiRouter)
 app.use ('/', pageRouter)
 
+//if no routes match, send reactApp.ejs to client.
+app.use((req, res)=>{
+  res.render('reactApp.ejs')
+})
 
 app.use((req, res)=>{
   res.send('<h1>404 - Page Not Found!</h1>')
