@@ -1,43 +1,45 @@
 const Router = require('express').Router
 var apiRouter = Router()
+const Job = require('../models/Job')
+const Company = require('../models/Company')
 
-apiRouter
-  .get('/jobs', (req, res) =>{
-    res.json([
-      {
-        title: 'SQL Server Administrator - Postgres',
-        description: 'Bring to the table win-win survival strategies to ensure proactive domination. User generated content in real-time will have multiple touchpoints for offshoring.',
-        location: 'Guadalajara',
-        salary: 27000,
-        fullTime: true,
-        companyId: 1
-      },
-      {
-        title: 'UX Engineer',
-        description: 'Override the digital divide with additional clickthroughs from DevOps. Leverage agile frameworks to provide a robust synopsis for high level overviews.',
-        location: 'Monterrey',
-        salary: 35000,
-        fullTime: true,
-        companyId: 1
-      },
-      {
-        title: 'API Architect',
-        description: 'Collaboratively administrate turnkey channels whereas virtual e-tailers. Objectively seize scalable metrics whereas proactive e-services.',
-        location: 'Ciudad de Mexio',
-        salary: 39000,
-        fullTime: true,
-        companyId: 2
-      },
-      {
-        title: 'Mid-Level Front End Engineer',
-        description: 'Interactively coordinate proactive e-commerce via process-centric "outside the box" thinking. Completely pursue scalable customer service through sustainable potentialities.',
-        location: 'Ciudad de Mexico',
-        salary: 21000,
-        fullTime: false,
-        companyId: 2
-      }
-    ])
-  })
+// apiRouter
+//   .get('/jobs', (req, res) =>{
+//     res.json([
+//       {
+//         title: 'SQL Server Administrator - Postgres',
+//         description: 'Bring to the table win-win survival strategies to ensure proactive domination. User generated content in real-time will have multiple touchpoints for offshoring.',
+//         location: 'Guadalajara',
+//         salary: 27000,
+//         fullTime: true,
+//         companyId: 1
+//       },
+//       {
+//         title: 'UX Engineer',
+//         description: 'Override the digital divide with additional clickthroughs from DevOps. Leverage agile frameworks to provide a robust synopsis for high level overviews.',
+//         location: 'Monterrey',
+//         salary: 35000,
+//         fullTime: true,
+//         companyId: 1
+//       },
+//       {
+//         title: 'API Architect',
+//         description: 'Collaboratively administrate turnkey channels whereas virtual e-tailers. Objectively seize scalable metrics whereas proactive e-services.',
+//         location: 'Ciudad de Mexio',
+//         salary: 39000,
+//         fullTime: true,
+//         companyId: 2
+//       },
+//       {
+//         title: 'Mid-Level Front End Engineer',
+//         description: 'Interactively coordinate proactive e-commerce via process-centric "outside the box" thinking. Completely pursue scalable customer service through sustainable potentialities.',
+//         location: 'Ciudad de Mexico',
+//         salary: 21000,
+//         fullTime: false,
+//         companyId: 2
+//       }
+//     ])
+//   })
 
 // apiRouter
 //   .get('/companies', (req, res)=>{
@@ -84,12 +86,31 @@ apiRouter
 //     })
 
 // })
+
 //====================================================
-//  DATA ACCESS :: api/companies
+//  DATA ACCESS :: api/jobs
+
+apiRouter.get('/jobs', (req, res) => {
+  Job
+    .query()
+    .eager('company')
+    .then(records =>{
+      res.status(200).json(records)
+  })
+
+})
+
+
+//====================================================
+//  DATA ACCESS :: api/companies 
+
+
+
 apiRouter.get('/companies', (req, res) => {
-  const db = req.app.locals.db
-  db.select('*').from('companies')
-    .then((records) => {
+  Company
+    .query()
+    .eager('jobs')
+    .then(records => {
       res.status(200).json(records)
     })
 })
