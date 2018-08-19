@@ -3,10 +3,16 @@ var pageRouter = require('./src/routers/pageRouter')
 var apiRouter = require('./src/routers/apiRouter')
 //STEP A.1 - Import EJS (view templating engine)
 const ejs = require('ejs')
+// Import knex
+const knex = require('knex')
+// Import knexfile.js config
+const devConfig = require('./knexfile.js')
 
 
 const app = express()
 const PORT = 3000
+
+
 
 // STEP - B.1
 app.use( express.static( `${__dirname}/public` ) )
@@ -16,6 +22,17 @@ app.use( express.static( `${__dirname}/public` ) )
 app.engine( 'ejs', ejs.renderFile )
 app.set('view engine', 'ejs')
 app.set('views', `${__dirname}/src/views`)
+
+/* Data Access Config */
+const appDb = knex(devConfig.development)
+app.locals.db = appDb
+
+// // Test to see that data access works
+// appDb.select('*').from('vendors')
+//   .then((records)=>{
+//     console.log(records)
+//   })
+
 
 app.use ('/', pageRouter)
 app.use ('/api', apiRouter)

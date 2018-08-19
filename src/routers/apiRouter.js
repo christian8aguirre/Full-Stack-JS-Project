@@ -1,7 +1,7 @@
 const Router = require('express').Router
-var pageRouter = Router()
+var apiRouter = Router()
 
-pageRouter
+apiRouter
   .get('/jobs', (req, res) =>{
     res.json([
       {
@@ -39,24 +39,62 @@ pageRouter
     ])
   })
 
+// apiRouter
+//   .get('/companies', (req, res)=>{
+//     res.json([
+//         {
+//         name: 'Company ABC',
+//         description: 'Energistically network alternative technology deploying impactful partnerships.',
+//         imageLink: 'http://www.tinygraphs.com/labs/isogrids/hexa16/nsuaio',
+//         location: 'Guadalajara'
+//       },
+//       {
+//         name: 'Lossless Enterprises',
+//         description: 'Quickly strategizing team driven "outside the box" thinking.',
+//         location: 'Ciudad de Mexico',
+//         imageLink: 'http://www.tinygraphs.com/labs/isogrids/hexa16/8282',
+//       }
+//     ])
+//   })
+
+//   // DATA ACCESS - multiple records from 'vendors' table //
+// apiRouter.get('/vendors', (req, res)=>{
+
+//   // We have access to the knex-db connection on the `req` object
+//   //    from when we assigned it to app.locals.db in server.js
+//   const db = req.app.locals.db
+//   db.select('*').from('vendors')
+//     .then((dbRecordsReturned)=>{
+//       res.status(200).json(dbRecordsReturned)
+//     })
+// })
 
 
-pageRouter
-  .get('/companies', (req, res)=>{
-    res.json([
-        {
-        name: 'Company ABC',
-        description: 'Energistically network alternative technology deploying impactful partnerships.',
-        imageLink: 'http://www.tinygraphs.com/labs/isogrids/hexa16/nsuaio',
-        location: 'Guadalajara'
-      },
-      {
-        name: 'Lossless Enterprises',
-        description: 'Quickly strategizing team driven "outside the box" thinking.',
-        location: 'Ciudad de Mexico',
-        imageLink: 'http://www.tinygraphs.com/labs/isogrids/hexa16/8282',
-      }
-    ])
-  })
+// // DATA ACCESS - single record from 'vendors' table //
+// apiRouter.get('/vendors/:_id', (req, res)=>{
+//   const db = req.app.locals.db
 
-  module.exports = pageRouter
+//   const idInRoute = req.params._id
+//   console.log(idInRoute);
+
+//   db.select('*').from('vendors')
+//     .where('id', '=', idInRoute)
+//     .then((records)=>{
+//       res.json(records[0])
+//     })
+
+// })
+//====================================================
+//  DATA ACCESS :: api/companies
+apiRouter.get('/companies', (req, res) => {
+  const db = req.app.locals.db
+  db.select('*').from('companies')
+    .then((records) => {
+      res.status(200).json(records)
+    })
+})
+
+
+
+
+  module.exports = apiRouter
