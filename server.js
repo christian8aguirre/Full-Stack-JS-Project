@@ -16,12 +16,23 @@ const { Model } = require('objection')
 //    json in the body of a POST/PUT/DELETE request
 const bodyParser = require('body-parser')
 
+// A.1 - Import Auth libraries
+const passport = require('passport')
+const cookieParser = require('cookie-parser')
+const cookieSession = require('cookie-session')
+
+// A.2- Import configuration functions
+const registerLocalStrategy = require('./src/middleware/passport-local--registerLocalStrategy.js')
+const { configDeserializeUser, configSerializeUser } = require('./src/helpers/passport-local--sessionActions.js')
+
+//A.3 - Import authRouter and create router middleware
+const authRouter = require('./src/routers/authRouter')
 
 
 const app = express()
 const PORT = 3000
 
-
+//===================================================================================================
 
 // STEP - B.1
 app.use( express.static( `${__dirname}/public` ) )
@@ -56,11 +67,30 @@ app.locals.db = appDb
 app.use( bodyParser.urlencoded({extended: false}) )
 app.use( bodyParser.json() )
 
+//A.3a - Configure cookie parser/session libraries + middleware n
+app.use( cookieParser() )
+app.use( cookieSession({
+  name: 'cookiesession',
+  secret: 'supercookiesecret',
+  httpOnly: true,
+  signed: false
+}))
 
 
+//A.3b - Configure passport + session middleware
+app.use(passport.initialize())
+app.use(passport.session())
+passport.use(registerLocalStrategy())
+passport.serializeUser(configSerializeUser())
+passport.deserializeUser(configDeserializeUser())
+
+
+//create router middleware 
+app.use('/auth', authRouter)
 //Routers in express
-app.use ('/', pageRouter)
 app.use ('/api', apiRouter)
+app.use ('/', pageRouter)
+
 
 app.use((req, res)=>{
   res.send('<h1>404 - Page Not Found!</h1>')
