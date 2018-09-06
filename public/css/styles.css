@@ -125,13 +125,13 @@ img{
 
 }
 
-/* .company-fact__title{
+.company-fact__title{
 
 }
 
 .company-fact__description{
 
-} */
+}
 
 #react-app{
   padding-top: 2rem;
@@ -168,6 +168,10 @@ img{
   color:  #C2185B;
 }
 
+.nav__link-home i{
+  font-size: 2rem;
+}
+
 .nav__link-login{
   color: #FF9800;
 }
@@ -179,7 +183,7 @@ img{
 
 .form{
   max-width: 580px;
-  margin: 150px auto;
+  margin: 100px auto;
   border: 1px solid #333;
   padding: 2rem;
   background: #fff;
@@ -393,7 +397,7 @@ img{
   .company-single__location{
     margin: 0;
     margin-left: .25rem;
-    /* font-size: . */
+    font-size: .
   }
 
 .company-single__job-listings-col{

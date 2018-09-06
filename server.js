@@ -30,7 +30,7 @@ const authRouter = require('./src/routers/authRouter')
 
 
 const app = express()
-const PORT = 3000
+const PORT = 8000
 
 //===================================================================================================
 
@@ -67,6 +67,11 @@ app.locals.db = appDb
 app.use( bodyParser.urlencoded({extended: false}) )
 app.use( bodyParser.json() )
 
+if(typeof process.env.NODE_ENV === 'undefined'){
+  console.log("YOU MUST DEFINE THE NODE_ENV!!!")
+  process.exit()
+}
+
 //A.3a - Configure cookie parser/session libraries + middleware n
 app.use( cookieParser() )
 app.use( cookieSession({
@@ -101,5 +106,8 @@ app.use((req, res)=>{
 })
 
 app.listen(PORT, ()=>{
+  console.log('==========================')
   console.log(`App listening on localhost:${PORT}`);
+  console.log(`Environment : ${process.env.NODE_ENV}`)
+  console.log('==========================')
 })

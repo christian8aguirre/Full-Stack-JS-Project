@@ -1,31 +1,36 @@
 import React from 'react';
+import Company from './CompanyCard';
+import request from 'superagent';
 
-export default class Companies  extends React.Component {
+export default class CompanyListings  extends React.Component {
+  constructor(...args){
+    super(...args)
 
+    this.state = {
+      companyApiData : []
+    }
+  }
+
+  componentWillMount(){
+    request
+    .get('/api/companies')
+    .then(serverRes =>{
+      this.setState({
+        companyApiData: serverRes.body
+      })
+    })
+  }
   render(){
+    const companylistings = this.state.companyApiData
     return   <div className="page page--companies">
         <h2>Companies</h2>
-        <div className="company-listing">
-          <h3 className='company-listing__title'>Title</h3>
-          <p className='company-listing__subtitle'>Subtitle</p>
-          <p className='company-listing__description'>Description</p>
-          <button className='company-listing__view-company-btn'>See More</button>
-          <hr className='job-listing__divider'></hr>
-        </div>
-        <div className="company-listing">
-          <h3 className='company-listing__title'>Title</h3>
-          <p className='company-listing__subtitle'>Subtitle</p>
-          <p className='company-listing__description'>Description</p>
-          <button className='company-listing__view-company-btn'>See More</button>
-          <hr className='job-listing__divider'></hr>
-        </div>
-        <div className="company-listing">
-          <h3 className='company-listing__title'>Title</h3>
-          <p className='company-listing__subtitle'>Subtitle</p>
-          <p className='company-listing__description'>Description</p>
-          <button className='company-listing__view-company-btn'>See More</button>
-          <hr className='job-listing__divider'></hr>
-        </div>
+        {companylistings.map(companylistingsObj => {
+          return <Company 
+            {...companylistingsObj}
+            key = {companylistingsObj.id}
+          />
+          })
+        }
       </div>
   }
 }
